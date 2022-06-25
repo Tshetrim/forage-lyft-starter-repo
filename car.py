@@ -1,10 +1,17 @@
-from abc import ABC, abstractmethod
+from servicable import servicable
 
 
-class Car(ABC):
-    def __init__(self, last_service_date):
-        self.last_service_date = last_service_date
 
-    @abstractmethod
-    def needs_service(self):
-        pass
+class Car(servicable):
+    def __init__(self, engine, battery):
+        self.engine = engine
+        self.battery = battery
+
+    #overriding from servicable
+    def needs_service(self) -> bool:
+        for a in dir(Car):
+            if getattr(Car, a).needs_service():
+                    return True
+        return False
+
+
