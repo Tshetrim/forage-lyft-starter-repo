@@ -1,9 +1,10 @@
 from servicable import servicable
 
 class Car(servicable):
-    def __init__(self, engine, battery):
+    def __init__(self, engine, battery, tires):
         self.engine = engine
         self.battery = battery
+        self.tires = tires
 
     #overriding from servicable
     def needs_service(self) -> bool:

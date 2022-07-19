@@ -7,4 +7,7 @@ class SternmanEngine(Engine):
         self.warning_light_on = warning_light_on
 
     def needs_service(self) -> bool:
+        """
+        Returns true if -> warning light is on
+        """
         return self.warning_light_on

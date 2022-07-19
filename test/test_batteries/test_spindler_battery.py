@@ -6,26 +6,24 @@ from datetime import datetime
 from batteries.spindler_battery import SpindlerBattery
 
 class TestSpindlerBattery(unittest.TestCase):
-    def test_spindler_battery_should_be_serviced_5_years(self):
+    def test_needs_service_true(self):
         """
-        Test that the spindler battery needs to be serviced
-        If 2 years has passed, should return true
+        Test that the spindler battery needs to be serviced when it should
         """
         today = datetime.today().date()
         last_service_date = today.replace(year=today.year - 5) #5 years in the past
-        spindler_battery = SpindlerBattery(last_service_date, today)
-        result = spindler_battery.needs_service()
+        battery = SpindlerBattery(last_service_date, today)
+        result = battery.needs_service()
         self.assertTrue(result)
     
-    def test_spindler_battery_should_be_serviced_1_year(self):
+    def test_needs_service_false(self):
         """
-        Test that the spindler battery needs to be serviced
-        If 2 years has not passed, should return false
+        Test that the spindler battery needs to be serviced when it should not
         """
         today = datetime.today().date()
         last_service_date = today.replace(year=today.year - 1) #1 year in the past
-        spindler_battery = SpindlerBattery(last_service_date, today)
-        result = spindler_battery.needs_service()
+        battery = SpindlerBattery(last_service_date, today)
+        result = battery.needs_service()
         self.assertFalse(result)
 
 
