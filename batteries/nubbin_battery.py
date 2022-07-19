@@ -1,5 +1,5 @@
 from datetime import datetime
-from batteries import Battery
+from batteries.battery import Battery
 
 
 class NubbinBattery(Battery):
